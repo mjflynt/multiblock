@@ -13,18 +13,18 @@
 @performances = 0
 
   def opportunity &b1
-    method(
-        def helper b1, dummy, &b2
+    send(
+        def helper b1, &b2
             if b1.call 
                 @opportunities += 1
             end
             if b2.call 
                 @performances += 1
             end
-        end).curry[b1]
+        end, b1).curry
   end
 
-  opportunity {true}[nil]{true} 
+  opportunity {true}[]{true} 
   p [@opportunities, @performances]     #[1, 1]
   opportunity {false}[nil]{true}
   p [@opportunities, @performances]     #[1, 2]
