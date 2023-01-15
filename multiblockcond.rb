@@ -12,7 +12,7 @@ def f(x, y, &b)
             ).curry[x, y, b]
 end
 
-p f(13,5){ |a, b| "#{b} >= #{a}" }[]{ |a, b| "#{a} > #{b}" }
+p f(13,5){ |a, b| "#{b} >= #{a}" }[0]{ |a, b| "#{a} > #{b}" }
 p f(5,5){ "second is same or larger!" }[nil]{ "first is larger" }
 p f(5,13){ "second is same or larger!" }[nil]{ "first is larger" }
 p f('a','z'){ "second is same or larger!" }[nil]{ "first is larger" }

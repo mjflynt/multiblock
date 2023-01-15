@@ -12,19 +12,32 @@
 @opportunities = 0
 @performances = 0
 
-  def opportunity &b1
-    send(
-        def helper b1, &b2
-            if b1.call 
-                @opportunities += 1
-            end
-            if b2.call 
-                @performances += 1
-            end
-        end, b1).curry
+#   def opportunity &b1
+#     def helper b1, &b2
+#         if b1.call 
+#             @opportunities += 1
+#         end
+#         if b2.call 
+#             @performances += 1
+#         end
+#     end
+#     method(:helper).curry[b1]
+#   end
+    
+    
+
+def opportunity &b1
+    def helper b1, trigger, &b2
+        if b1.call 
+            @opportunities += 1
+        end
+        if b2.call 
+            @performances += 1
+        end
+    end.to_proc.curry[b1]
   end
 
-  opportunity {true}[]{true} 
+  opportunity {true}[nil]{true} 
   p [@opportunities, @performances]     #[1, 1]
   opportunity {false}[nil]{true}
   p [@opportunities, @performances]     #[1, 2]
