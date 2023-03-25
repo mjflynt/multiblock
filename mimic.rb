@@ -41,7 +41,7 @@ x.whatIsp
 p Klass.methods(false)
 p '-'*40
 p x.public_methods(false)
-
+                                                                                               
 # define_method(:barney, instance_method(:fred))
 
 x = Klass.instance_method(:m1)
@@ -57,7 +57,7 @@ f.copied_m1(81)
 
 
 k = M.new
-puts k.methods.sort - k.class.superclass.methods.sort
+puts k.methods.sort - k.class.superclass.methods
 
 p '~'*40
 

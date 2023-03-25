@@ -6,6 +6,8 @@ module Junk
     end
 end
 
+p '-'*40
+
 class Jeff
     include Junk
 end
